@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<gxpconf>
+  <ocaconf>
+    <oca id="OCA_AGENT" des="" flowEntry="FLOWOUT_AGENT2{SendNode}_MAIN" eflowEntry="" flowCtrl="80" timeOut="90" Otype="O_OTCP" serviceIP="10.16.51.190" portSet1="8000" portSet2="" cocurrents="4" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" sndPkgFmt="LH" rcvPkgFmt="LH" dataLenType="E" charLen="8" dataLenMode="0" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagLen="" whileFlagValue="" heartBeat="" HBCharReq="" HBCharResp="" para4=""/>
+    <oca id="OCA_TEST" des="" flowEntry="FLOWOUT_TEST2{SendNode}_MAIN" eflowEntry="" flowCtrl="80" timeOut="90" Otype="O_OTCP" serviceIP="10.16.51.17" portSet1="8000" portSet2="" cocurrents="4" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" sndPkgFmt="LH" rcvPkgFmt="LH" dataLenType="E" charLen="8" dataLenMode="0" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagLen="" whileFlagValue="" heartBeat="" HBCharReq="" HBCharResp="" para4=""/>
+    <oca id="O_NULL" des="" flowEntry="" eflowEntry="" flowCtrl="0" timeOut="-1" Otype="O_ONIL"/>
+  </ocaconf>
+  <nodeconf>
+    <channelnode id="NODEOUT_TEST" adapterId="OCA_TEST" des="" type="0" nodeIp="*.*.*.*" assistAdapterId="" maxConn="0" maxFlow="0" timeout="0" varCfg="HEAD_PUBLIC_GXPCHN" expired="0"/>
+  </nodeconf>
+  <icaconf>
+    <ica id="ICA_ACS" des="" Itype="I_ITCP" flowEntry="FLOWIN_ACS2{RecvNode}_MAIN" eflowEntry="" isDirect="0" DestOCA="" authType="1" ipSet="" port="34300" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" rcvPkgFmt="LH" sndPkgFmt="LH" dataLenType="C" charLen="8" dataLenMode="1" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagValue="" whileFlagLen="" heartBeat="0" HBCharReq="" HBCharResp=""/>
+    <ica id="ICA_AC" des="" Itype="I_ITCP" flowEntry="FLOWIN_AC2{RecvNode}_MAIN" eflowEntry="" isDirect="0" DestOCA="" authType="1" ipSet="" port="34300" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" rcvPkgFmt="LH" sndPkgFmt="LH" dataLenType="C" charLen="8" dataLenMode="1" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagValue="" whileFlagLen="" heartBeat="0" HBCharReq="" HBCharResp=""/>
+  </icaconf>
+  <tpoll maxThreads="1"/>
+</gxpconf>   
