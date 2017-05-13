@@ -1,0 +1,26 @@
+{
+  "name": "build-gxp-env",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikyWang/build-gxp-env.git"
+  },
+  "keywords": [
+    "gxp"
+  ],
+  "author": "miky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikyWang/build-gxp-env/issues"
+  },
+  "homepage": "https://github.com/MikyWang/build-gxp-env#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "xml2js": "^0.4.17"
+  }
+}
