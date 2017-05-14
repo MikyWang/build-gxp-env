@@ -11,8 +11,7 @@ const gxpIp = {
     dev63: '192.168.0.103'
 }
 
-const cmd = `cd cfg\n
-             stopgxp -e\n
+const cmd = `stopgxp -e\n
              startgxp\n
              exit\n`;
 
@@ -199,7 +198,8 @@ function updateConfigure(url, res) {
                             conn.end();
                             res.end(`<span style="color:red">更新环境` + gxpIp[url] + `成功</span>`);
                         }).on('data', function (data) {
-                            res.write(`<div style="color:blue">` + data + `成功</div>`);
+                            fs.appendFileSync('./syncConfig.log', data + '\n');
+                            res.write(`<div style="color:blue">` + data + `</div>`);
                         }).stderr.on('data', function (data) {
                             console.log('stderr: ' + data);
                         });
