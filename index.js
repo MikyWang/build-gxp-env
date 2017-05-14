@@ -1,11 +1,35 @@
 var fs = require('fs');
 var xml2js = require('xml2js');
+var Client = require('ssh2').Client;
+var http = require('http');
+
 
 var parser = new xml2js.Parser();
 var builder = new xml2js.Builder();
 
-var backupContent = fs.readFileSync('./backup.xml', 'utf-8');
-var updateContent = fs.readFileSync('./new.xml', 'utf-8');
+const gxpIp = {
+    dev63: '192.168.0.103'
+}
+
+const cmd = `cd cfg\n
+             stopgxp -e\n
+             startgxp\n
+             exit\n`;
+
+http.createServer(function (req, res) {
+    req.setEncoding('utf8');
+    var ip = req.url.replace('/', '');
+    if (gxpIp[ip]) {
+        updateConfigure(ip, res);
+
+    } else {
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        res.write('<head><meta charset="utf-8"/></head>');
+        res.end('无效地址');
+    }
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('<head><meta charset="utf-8"/></head>');
+}).listen(8888);
 
 function GxpConf() {
     this.gxpconf = {
@@ -121,7 +145,7 @@ function updateConfig(conf, elem) {
     }
 }
 
-function main() {
+function syncConfig(url, backupContent, updateContent) {
     var backup = new GxpConf();
     var update = new GxpConf();
     parser.parseString(backupContent, function (error, result) {
@@ -148,7 +172,47 @@ function main() {
     });
     var finallyContent = builder.buildObject(backup);
 
-    fs.writeFileSync('./finally.xml', finallyContent);
+    fs.writeFileSync('./config/' + url + '.xml', finallyContent);
 }
 
-main();
+
+
+
+
+function updateConfigure(url, res) {
+    var backupContent = fs.readFileSync('./config/' + url + '.xml', 'utf-8');
+    var updateContent = '';
+    var conn = new Client();
+    conn.on('ready', function () {
+        console.log('Client :: ready');
+        conn.sftp(function (err, sftp) {
+            if (err) throw err;
+            sftp.fastGet('cfg/gxpconfpublic.xml', './gxpconfpublic.xml', function (err, result) {
+                if (err) throw err;
+                updateContent = fs.readFileSync('./gxpconfpublic.xml', 'utf-8');
+                syncConfig(url, backupContent, updateContent);
+                sftp.fastPut('./config/' + url + '.xml', 'cfg/gxpconfpublic.xml', function (err, result) {
+                    if (err) throw err;
+                    conn.shell(function (err, stream) {
+                        if (err) throw err;
+                        stream.on('close', function () {
+                            conn.end();
+                            res.end(`<span style="color:red">更新环境` + gxpIp[url] + `成功</span>`);
+                        }).on('data', function (data) {
+                            res.write(`<div style="color:blue">` + data + `成功</div>`);
+                        }).stderr.on('data', function (data) {
+                            console.log('stderr: ' + data);
+                        });
+                        stream.end(cmd);
+                    })
+                })
+
+            });
+        });
+    }).connect({
+        host: gxpIp[url],
+        port: 22,
+        username: 'gxp',
+        password: 'gxp'
+    });
+}

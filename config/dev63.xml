@@ -62,7 +62,7 @@
     <oca id="OCA_XIP5" des="" flowEntry="FLOWOUT_XIP2{SendNode}_MAIN" eflowEntry="" flowCtrl="50" timeOut="80" Otype="O_OTCP" serviceIP="10.16.51.212" portSet1="7865" portSet2="" cocurrents="4" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" sndPkgFmt="LH" rcvPkgFmt="LH" dataLenType="C" charLen="4" dataLenMode="0" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagLen="" whileFlagValue="" heartBeat="" HBCharReq="" HBCharResp="" para4=""/>
     <oca id="OCA_YLAPP" des="" flowEntry="FLOWOUT_YLAPP2{SendNode}_MAIN" eflowEntry="FLOWOUT_YLAPP2ATMP_EXCEPTION" flowCtrl="100" timeOut="90" Otype="O_OHSXP" serviceIP="10.16.51.36" portSet1="12206" SDSsvrName="SDSsvr2" cocurrents="10" para1="sysatmp"/>
     <oca id="O_NULL" des="" flowEntry="" eflowEntry="" flowCtrl="0" timeOut="-1" Otype="O_ONIL"/>
-    <oca id="OCA_TEST" des="" flowEntry="FLOWOUT_TEST2{SendNode}_MAIN" eflowEntry="" flowCtrl="80" timeOut="90" Otype="O_OTCP" serviceIP="10.16.51.17" portSet1="8000" portSet2="" cocurrents="4" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" sndPkgFmt="LH" rcvPkgFmt="LH" dataLenType="E" charLen="8" dataLenMode="0" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagLen="" whileFlagValue="" heartBeat="" HBCharReq="" HBCharResp="" para4=""/>
+    <oca id="OCA_TEST2" des="" flowEntry="FLOWOUT_TEST2{SendNode}_MAIN" eflowEntry="" flowCtrl="80" timeOut="90" Otype="O_OTCP" serviceIP="10.16.51.17" portSet1="8000" portSet2="" cocurrents="4" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" sndPkgFmt="LH" rcvPkgFmt="LH" dataLenType="E" charLen="8" dataLenMode="0" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagLen="" whileFlagValue="" heartBeat="" HBCharReq="" HBCharResp="" para4=""/>
   </ocaconf>
   <nodeconf>
     <channelnode id="NODEIN_ACS" adapterId="ICA_ACS" des="" type="0" nodeIp="*.*.*.*" assistAdapterId="" maxConn="0" maxFlow="0" timeout="0" varCfg="HEAD_PUBLIC_GXPCHN" expired="0"/>
@@ -185,7 +185,7 @@
     <channelnode id="NODEOUT_XIP5" adapterId="OCA_XIP5" des="" type="1" backup="" capFactor="1" varCfg="" expired="0"/>
     <channelnode id="NODEOUT_YLAPP" adapterId="OCA_YLAPP" des="" type="1" backup="" capFactor="1" varCfg="" expired="0"/>
     <channelnode id="O_NULL" adapterId="O_NULL" des="" type="1" backup="" capFactor="1" varCfg="" expired="0"/>
-    <channelnode id="NODEOUT_TEST" adapterId="OCA_TEST" des="" type="0" nodeIp="*.*.*.*" assistAdapterId="" maxConn="0" maxFlow="0" timeout="0" varCfg="HEAD_PUBLIC_GXPCHN" expired="0"/>
+    <channelnode id="NODEOUT_TEST2" adapterId="OCA_TEST" des="" type="0" nodeIp="*.*.*.*" assistAdapterId="" maxConn="0" maxFlow="0" timeout="0" varCfg="HEAD_PUBLIC_GXPCHN" expired="0"/>
   </nodeconf>
   <icaconf>
     <ica id="ICA_ACS" des="" Itype="I_ITCP" flowEntry="FLOWIN_ACS2{RecvNode}_MAIN" eflowEntry="" isDirect="0" DestOCA="" authType="1" ipSet="" port="34300" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" rcvPkgFmt="LH" sndPkgFmt="LH" dataLenType="C" charLen="8" dataLenMode="1" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagValue="" whileFlagLen="" heartBeat="0" HBCharReq="" HBCharResp=""/>
@@ -247,7 +247,7 @@
     <ica id="ICA_YBT" des="" Itype="I_ISTD" flowEntry="FLOWIN_YBT2{RecvNode}_MAIN" eflowEntry="" isDirect="0" DestOCA="" port="32901"/>
     <ica id="ICA_YLAPP" des="" Itype="I_ISTD" flowEntry="FLOWIN_YLAPP2{RecvNode}_MAIN" eflowEntry="" isDirect="0" DestOCA="" port="31100"/>
     <ica id="ICA_YYTAX" des="" Itype="I_ITCP" flowEntry="FLOWIN_YYTAX2{RecvNode}_MAIN" eflowEntry="" isDirect="0" DestOCA="" authType="1" ipSet="" port="34100" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" rcvPkgFmt="LH" sndPkgFmt="LH" dataLenType="C" charLen="8" dataLenMode="1" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagValue="" whileFlagLen="" heartBeat="0" HBCharReq="" HBCharResp=""/>
-    <ica id="ICA_AC" des="" Itype="I_ITCP" flowEntry="FLOWIN_AC2{RecvNode}_MAIN" eflowEntry="" isDirect="0" DestOCA="" authType="1" ipSet="" port="34300" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" rcvPkgFmt="LH" sndPkgFmt="LH" dataLenType="C" charLen="8" dataLenMode="1" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagValue="" whileFlagLen="" heartBeat="0" HBCharReq="" HBCharResp=""/>
+    <ica id="ICA_AC2" des="" Itype="I_ITCP" flowEntry="FLOWIN_AC2{RecvNode}_MAIN" eflowEntry="" isDirect="0" DestOCA="" authType="1" ipSet="" port="34300" sockConnType="0" operFlag="0" sockSyncFlag="0" syncChar="" rcvPkgType="N" rcvPkgFmt="LH" sndPkgFmt="LH" dataLenType="C" charLen="8" dataLenMode="1" para1="0" para2="" forNumType="" forNumLenType="" forNumLen="" whileFlagValue="" whileFlagLen="" heartBeat="0" HBCharReq="" HBCharResp=""/>
   </icaconf>
   <tpoll maxThreads="1"/>
 </gxpconf>
