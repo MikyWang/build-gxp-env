@@ -21,6 +21,7 @@
   "homepage": "https://github.com/MikyWang/build-gxp-env#readme",
   "dependencies": {
     "fs": "0.0.1-security",
+    "iconv-lite": "^0.4.17",
     "ssh2": "^0.5.4",
     "xml2js": "^0.4.17"
   }
